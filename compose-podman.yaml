@@ -1,0 +1,14 @@
+version: '3.9'  
+services:
+  portainer:
+    image: portainer/portainer-ce:alpine
+    container_name: Contenedores
+    command: -H unix:///var/run/docker.sock
+    privileged: true
+    ports:
+      - "9000:9000"
+    volumes:
+      - "/run/podman/podman.sock:/var/run/docker.sock"
+      - "./data/portainer_podman_data:/data"
+    restart: always
+# podman-compose up -d -f compose.yaml

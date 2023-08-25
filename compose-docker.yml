@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: Contenedores_Docker
+    privileged: true
+    ports:
+      - 9000:9000
+      volumes:
+        "./data/portainer_data_docker:/data"
+        - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+# docker-compose up -d -f compose.yaml
