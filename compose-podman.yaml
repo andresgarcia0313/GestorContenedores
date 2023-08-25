@@ -2,7 +2,7 @@ version: '3.9'
 services:
   portainer:
     image: portainer/portainer-ce:alpine
-    container_name: Contenedores
+    container_name: portainer_podman
     command: -H unix:///var/run/docker.sock
     privileged: true
     ports:
@@ -12,3 +12,25 @@ services:
       - "./data/portainer_podman_data:/data"
     restart: always
 # podman-compose up -d -f compose.yaml
+# Next Version:
+# version: '3.9'
+# services:
+#   portainer:
+#     image: portainer/portainer-ce:latest
+#     container_name: Contenedores
+#     command: -H unix:///var/run/docker.sock
+#     privileged: false  # Limitar privilegios si es posible
+#     ports:
+#       - "9000:9000"
+#     volumes:
+#       - "/var/run/docker.sock:/var/run/docker.sock"
+#       - "/var/lib/docker/volumes:/var/lib/docker/volumes"  # Acceso a volúmenes Docker
+#       - "./data/portainer_data:/data"
+#     restart: always
+#     healthcheck:
+#       test: ["CMD-SHELL", "curl -f http://localhost:9000/_ping || exit 1"]
+#       interval: 1m
+#       timeout: 10s
+#       retries: 3
+
+# # podman-compose up -d -f compose.yaml
